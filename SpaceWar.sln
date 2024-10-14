@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceWar", "SpaceWar\SpaceWar.csproj", "{843AA314-86DE-4AE1-99A9-6554187FDA85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceWar.Core", "SpaceWar.Core\SpaceWar.Core.csproj", "{A032DC51-AF04-459D-B375-0F6B362CAEE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceWar.ApplicationServices", "SpaceWar.ApplicationServices\SpaceWar.ApplicationServices.csproj", "{A05FDFE3-A90A-4D76-A835-5FFA87F7AB09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceWar.Data", "SpaceWar.Data\SpaceWar.Data.csproj", "{D707BE66-33F5-4F88-881E-2469EC649FF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{843AA314-86DE-4AE1-99A9-6554187FDA85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{843AA314-86DE-4AE1-99A9-6554187FDA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{843AA314-86DE-4AE1-99A9-6554187FDA85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{843AA314-86DE-4AE1-99A9-6554187FDA85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A032DC51-AF04-459D-B375-0F6B362CAEE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A032DC51-AF04-459D-B375-0F6B362CAEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A032DC51-AF04-459D-B375-0F6B362CAEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A032DC51-AF04-459D-B375-0F6B362CAEE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05FDFE3-A90A-4D76-A835-5FFA87F7AB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05FDFE3-A90A-4D76-A835-5FFA87F7AB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05FDFE3-A90A-4D76-A835-5FFA87F7AB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05FDFE3-A90A-4D76-A835-5FFA87F7AB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D707BE66-33F5-4F88-881E-2469EC649FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D707BE66-33F5-4F88-881E-2469EC649FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D707BE66-33F5-4F88-881E-2469EC649FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D707BE66-33F5-4F88-881E-2469EC649FF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55C1818B-C4A1-4E8F-BBCC-204B4B76CB9C}
+	EndGlobalSection
+EndGlobal
