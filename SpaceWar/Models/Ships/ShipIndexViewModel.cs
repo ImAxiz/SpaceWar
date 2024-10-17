@@ -32,7 +32,7 @@ namespace SpaceWar.Models.Ships
 
         //db only
 
-        public DateTime BuiltAt { get; set; }
-        public DateTime DestroyedAt { get; set; }
+        public DateTime Built { get; set; }
+        public DateTime Destroyed { get; set; }
     }
 }

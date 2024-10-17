@@ -1,1 +1,38 @@
-﻿
+﻿@model IEnumerable<SpaceWar.Models.Ships.ShipIndexViewModel>
+
+@{
+    int rowNumber = 1; 
+}
+<div><a asp-action="Add" asp-controller="Ships" type="submit" class="btn btn-primary">Go build a new ship</a></div>
+@* Kasutaja saab luua uue laeva. *@
+
+<div class="h1">Your Ships:</div>
+<form method="post">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                @*Hiljem lisab ka pilte*@
+                <th scope="col">#</th>
+                <th scope="col">ShipClass</th>
+                <th scope="col">ShipName</th>
+                <th scope="col">ShipLevel</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ship in Model)
+            {
+                <tr>
+                    @* Hiljem lisab ka pilt e*@
+                    <td>@rowNumber</td>
+                    <td>@ship.ShipClass</td>
+                    <td>@ship.ShipName</td>
+                    <td>@ship.ShipLevel</td>
+                </tr>
+                rowNumber++;
+            }
+        </tbody>
+    </table>
+</form>
+@* Missing button mängija profiiliks *@
+@* Missing button planeetide süsteemi leht *@
+@* Missing button player activiti history *@
