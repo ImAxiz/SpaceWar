@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SpaceWar.Data\SpaceWar.Data.csproj" />
+  </ItemGroup>
+
 </Project>

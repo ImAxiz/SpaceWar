@@ -11,6 +11,7 @@ namespace SpaceWar.Data
 {
     public class SpaceWarContext : DbContext
     {
+        public SpaceWarContext(DbContextOptions<SpaceWarContext> options) : base(options) {}
         public DbSet<Ship> Ships { get; set; }
     }
 }
