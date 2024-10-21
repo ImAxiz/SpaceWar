@@ -1,10 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using SpaceWar.ApplicationServices.Services;
+using SpaceWar.Core.ServiceInterface;
 using SpaceWar.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IShipsServices, ShipsServices>();
+
 builder.Services.AddDbContext<SpaceWarContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DeafultConnection")));
 

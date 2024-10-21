@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace SpaceWar.Core.Dto
 
     public enum ShipStatus
     {
-        Exists, Destoryed, Lost
+        UpAndRunning, Destoryed, Lost
     }
     public class ShipDto
     {
@@ -35,10 +36,10 @@ namespace SpaceWar.Core.Dto
         public DateTime ShipWasDestroyed { get; set; }
 
         //image 
-        /*         
+           
         public List<IFormFile> Files { get; set; }
         public IEnumerable<FileToDatabaseDto> Image { get; set; } = new List<FileToDatabaseDto>();
-        */
+        
          
 
 
