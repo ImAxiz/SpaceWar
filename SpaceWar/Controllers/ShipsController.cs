@@ -33,5 +33,11 @@ namespace SpaceWar.Controllers
                 });
             return View(resultingInventory);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ShipCreateViewModel vm = new();
+            return View("Create", vm);
+        }
     }
 }
