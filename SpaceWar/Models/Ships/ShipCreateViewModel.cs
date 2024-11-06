@@ -10,12 +10,12 @@
             public int ShipLevel { get; set; }
             public ShipClass ShipClass { get; set; }
             public ShipStatus ShipStatus { get; set; }
-            public int PrimaryAttack { get; set; }
-            public string PrimaryAttackName { get; set; }
-            public int SecondaryAttack { get; set; }
-            public string SecondaryAttackName { get; set; }
-            public int UltimateAttack { get; set; }
-            public string UltimateAttackName { get; set; }
+            public string PrimaryAttack { get; set; }
+            public int PrimaryAttackPower { get; set; }
+            public string SecondaryAttack { get; set; }
+            public int SecondaryAttackPower { get; set; }
+            public string UltimateAttack { get; set; }
+            public int UltimateAttackPower { get; set; }
             public DateTime ShipWasBuilt { get; set; }
             public DateTime? ShipWasDestroyed { get; set; }
 

@@ -29,7 +29,7 @@ namespace SpaceWar.Controllers
                 {
                     Id = x.Id,
                     ShipName = x.ShipName,
-                    ShipClass = (ShipClass)x.ShipClass,
+                    ShipClass = (Models.Ships.ShipClass)(Core.Dto.ShipClass)x.ShipClass,
                     ShipLevel = x.ShipLevel,
                 });
             return View(resultingInventory);
@@ -52,11 +52,11 @@ namespace SpaceWar.Controllers
                 ShipLevel = 0,
                 ShipClass= (Core.Dto.ShipClass)vm.ShipClass,
                 ShipStatus = (Core.Dto.ShipStatus)vm.ShipStatus,
-                PrimaryAttackName = vm.PrimaryAttackName,
+                PrimaryAttackPower = vm.PrimaryAttackPower,
                 PrimaryAttack = vm.PrimaryAttack,
-                SecondaryAttackName = vm.SecondaryAttackName,
+                SecondaryAttackPower = vm.SecondaryAttackPower,
                 SecondaryAttack = vm.SecondaryAttack,
-                UltimateAttackName = vm.UltimateAttackName,
+                UltimateAttackPower = vm.UltimateAttackPower,
                 UltimateAttack = vm.UltimateAttack,
                 ShipWasBuilt = DateTime.Now,
                 ShipWasDestroyed = DateTime.Now,

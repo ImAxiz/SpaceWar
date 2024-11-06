@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IShipsServices, ShipsServices>();
+builder.Services.AddScoped<IFileServices, FileServices>();
 
 builder.Services.AddDbContext<SpaceWarContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DeafultConnection")));
