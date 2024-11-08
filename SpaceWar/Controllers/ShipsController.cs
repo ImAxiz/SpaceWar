@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SpaceWar.Core.Dto;
 using SpaceWar.Core.ServiceInterface;
 using SpaceWar.Data;
@@ -79,6 +80,42 @@ namespace SpaceWar.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index", vm);
+        }
+        public async Task<IActionResult> Details(Guid id /*, Guid ref*/)
+        {
+            var ship = await _shipsServices.DetailsAsync(id);
+
+            if (ship == null)
+            {
+                return NotFound(); // <-- TODO; custom partial view with message, ship is not located
+            }
+
+            var images = await _context.FilesToDatabase
+                .Where(t => t.ShipID == id)
+                .Select(y => new ShipImageViewModel
+                {
+                    ShipID = y.ID,
+                    ImageID = y.ID,
+                    imageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
+
+            var vm = new ShipDetailsViewModel();
+            vm.Id = ship.Id;
+            vm.ShipName = ship.ShipName;
+            vm.ShipDurability = ship.ShipDurability;
+            vm.ShipXP = ship.ShipXP;
+            vm.ShipLevel = ship.ShipLevel;
+            vm.PrimaryAttack = ship.PrimaryAttack;
+            vm.PrimaryAttackPower = ship.PrimaryAttackPower;
+            vm.SecondaryAttack = ship.SecondaryAttack;
+            vm.SecondaryAttackPower = ship.SecondaryAttackPower;
+            vm.UltimateAttack = ship.UltimateAttack;
+            vm.UltimateAttackPower = ship.UltimateAttackPower;
+            vm.Image.AddRange(images);
+
+            return View(vm);
         }
     }
 }

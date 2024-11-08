@@ -19,6 +19,7 @@
                 <th scope="col">Class</th>
                 <th scope="col">Name</th>
                 <th scope="col">Level</th>
+                <th scope="col">Admin Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,9 @@
                 <td>@ship.ShipClass</td>
                 <td>@ship.ShipName</td>
                 <td>@ship.ShipLevel</td>
+                <td>
+                    <a asp-action="details" asp-controller="ships" asp-route-id="@ship.Id" class="btn btn-info">Ship Details</a>
+                </td>
             </tr>
             rowNumber++;
         }
