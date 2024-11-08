@@ -48,7 +48,8 @@ namespace SpaceWar.ApplicationServices.Services
             ship.ShipLevel = 0;
             ship.ShipStatus = Core.Domain.ShipStatus.Exists;
             ship.ShipWasBuilt = DateTime.Now;
-            ship.ShipWasDestroyed = DateTime.Parse("01 / 01 / 9999, 00,00,00");
+            ship.ShipWasDestroyed = DateTime.Parse("01 / 01 / 9999, 00:00:00");
+            
 
 
             //set by user
@@ -58,6 +59,7 @@ namespace SpaceWar.ApplicationServices.Services
             ship.SecondaryAttack = dto.SecondaryAttack;
             ship.UltimateAttack = dto.UltimateAttack;
             ship.UltimateAttackPower = dto.UltimateAttackPower;
+            ship.ShipName = dto.ShipName;
 
             //set for db
             ship.BuiltAt = DateTime.Now;

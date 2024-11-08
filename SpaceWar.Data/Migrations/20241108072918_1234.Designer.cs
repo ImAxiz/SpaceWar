@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpaceWar.Data;
 
@@ -11,9 +12,11 @@ using SpaceWar.Data;
 namespace SpaceWar.Data.Migrations
 {
     [DbContext(typeof(SpaceWarContext))]
-    partial class SpaceWarContextModelSnapshot : ModelSnapshot
+    [Migration("20241108072918_1234")]
+    partial class _1234
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

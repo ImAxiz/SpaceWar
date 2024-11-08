@@ -40,7 +40,8 @@ namespace SpaceWar.Controllers
             ShipCreateViewModel vm = new();
             return View("Create", vm);
         }
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ShipCreateViewModel vm)
         {
             var dto = new ShipDto()
