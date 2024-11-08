@@ -3,18 +3,19 @@
 <h1> @Html.DisplayFor(model => model.ShipName) </h1>
 
 <div>
-    <h4> My leader, the ship is looking mighty fine </h4>
+    <h4> Your ship details </h4>
     <h4 />
     <dl class="row">
         <div class="form-group row">
             <label asp-for="Id" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.Id)
         </div>
-        @foreach (var image in Model.Image)
-        {
-            <partial name="_Images" model="image" />
-        }
-
+        <div id="imagediv">
+            @foreach (var image in Model.Image)
+            {
+                <partial name="_Images" model="image" />
+            }
+        </div>
         <div class="form-group row">
             <label asp-for="ShipName" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.ShipName)

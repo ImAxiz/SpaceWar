@@ -12,5 +12,6 @@ namespace SpaceWar.Core.ServiceInterface
     {
         Task<Ship> DetailsAsync(Guid id);
         Task<Ship> Create(ShipDto dto);
+        Task<Ship> Update(ShipDto dto);
     }
 }

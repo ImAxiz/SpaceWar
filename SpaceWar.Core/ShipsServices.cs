@@ -76,42 +76,5 @@ namespace SpaceWar.ApplicationServices.Services
 
             return ship;
         }
-
-        public async Task<Ship> Update(ShipDto dto)
-        {
-            Ship ship = new Ship();
-
-            //set by service
-            ship.Id = dto.Id;
-            ship.ShipDurability = 100;
-            ship.ShipXP = 0;
-            ship.ShipXPNextLevel = 50;
-            ship.ShipLevel = 0;
-            ship.ShipStatus = (Core.Domain.ShipStatus)dto.ShipStatus;
-            ship.ShipWasBuilt = dto.ShipWasBuilt;
-            ship.ShipWasDestroyed = (DateTime)dto.ShipWasDestroyed;
-
-
-
-            //set by user
-            ship.ShipClass = (Core.Domain.ShipClass)dto.ShipClass;
-            ship.PrimaryAttack = dto.PrimaryAttack;
-            ship.PrimaryAttackPower = dto.PrimaryAttackPower;
-            ship.SecondaryAttack = dto.SecondaryAttack;
-            ship.UltimateAttack = dto.UltimateAttack;
-            ship.UltimateAttackPower = dto.UltimateAttackPower;
-            ship.ShipName = dto.ShipName;
-
-            //files
-            if (dto.Files != null)
-            {
-                _fileServices.UploadFilesToDatabase(dto, ship);
-            }
-            _context.Ships.Update(ship);
-            await _context.SaveChangesAsync();
-
-            return ship;
-
-        }
     }
 }
