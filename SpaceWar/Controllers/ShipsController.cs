@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SpaceWar.ApplicationServices.Services;
 using SpaceWar.Core.Dto;
 using SpaceWar.Core.ServiceInterface;
 using SpaceWar.Data;
@@ -16,10 +17,12 @@ namespace SpaceWar.Controllers
 
         private readonly SpaceWarContext _context;
         private readonly IShipsServices _shipsServices;
-        public ShipsController(SpaceWarContext context, IShipsServices shipsServices)
+        private readonly IFileServices _fileServices;
+        public ShipsController(SpaceWarContext context, IShipsServices shipsServices, IFileServices fileServices)
         {
             _context = context;
             _shipsServices = shipsServices;
+            _fileServices = fileServices;
         }
 
         [HttpGet]
@@ -193,6 +196,61 @@ namespace SpaceWar.Controllers
 
             if (result == null) { return RedirectToAction("Index"); }
             return RedirectToAction("Index", vm);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            if (id == null) { return NotFound(); }
+
+            var ship = await _shipsServices.DetailsAsync(id);
+
+            if (ship == null) { return NotFound();}
+
+            var images = await _context.FilesToDatabase
+                .Where(x = x.ShipID == id)
+                .Select( y => new ShipImageViewModel
+                {
+                    ShipID = y.ID,
+                    ImageID = y.ID,
+                    imageData = y.imageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base4,{0}", Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
+            var vm = new ShipDeleteViewModel();
+
+            vm.Id = ship.Id;
+            vm.ShipName = ship.ShipName;
+            vm.ShipDurability = ship.ShipDurability;
+            vm.ShipXP = ship.ShipXP;
+            vm.ShipLevel = ship.ShipLevel;
+            vm.PrimaryAttack = ship.PrimaryAttack;
+            vm.PrimaryAttackPower = ship.PrimaryAttackPower;
+            vm.SecondaryAttack = ship.SecondaryAttack;
+            vm.SecondaryAttackPower = ship.SecondaryAttackPower;
+            vm.UltimateAttack = ship.UltimateAttack;
+            vm.UltimateAttackPower = ship.UltimateAttackPower;
+            vm.Image.AddRange(images);
+
+            return View(vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
+        {
+            var shipToDelete = await _shipsServices.Delete(id);
+
+            if (shipToDelete == null) { return RedirectToAction("Index"); }
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public async Task<IActionResult> RemoveImage(ShipImageViewModel vm)
+        {
+            var dto = new FileToDatabaseDto()
+            {
+                ID = vm.ImageID
+            };
+            var image = await _fileServices.RemoveImageFromDatabase(dto);
+            if (image == null) { return RedirectToAction("index"); }
+            return RedirectToAction("index");
         }
     }
 }

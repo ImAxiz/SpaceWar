@@ -11,5 +11,6 @@ namespace SpaceWar.Core.ServiceInterface
     public interface IFileServices
     {
         void UploadFilesToDatabase(ShipDto dto, Ship domain);
+        Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto);
     }
 }

@@ -113,5 +113,14 @@ namespace SpaceWar.ApplicationServices.Services
             return ship;
 
         }
+        public async Task<Ship> Delete(Guid id)
+        {
+            var result = await _context.Ships
+                .FirstOrDefaultAsync(x => x.Id == id);
+            _context.Ships.Remove(result);
+            await _context.SaveChangesAsync();
+
+            return result;
+        }
     }
 }

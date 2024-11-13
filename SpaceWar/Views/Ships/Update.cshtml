@@ -1,7 +1,7 @@
 ﻿@model SpaceWar.Models.Ships.ShipCreateViewModel
 
 <div>
-    <form method="post" asp-action="Create" enctype="multipart/form-data">
+    <form method="post" asp-action="Update" enctype="multipart/form-data">
 
         <div class="form-group-row">
             <label asp-for="ShipName" class="col-sm-2 col-form-label"></label>
@@ -68,9 +68,16 @@
                 </div>
             </div>
         </div>
+        <div>
+            @foreach(var image in Model.Image)
+            {
+                <partial name="_Images" model="image"></partial>
+                <input asp-action="removeImage" asp-controller="ships" asp-route-id="@image.ImageID" type="submit" class="btn btn-danger" value="DELETE THIS"/>
+            }
+        </div>
 
-        <input asp-action="create" asp-controller="ships" type="submit" 
-        class="btn btn-primary" value="Create">Make the ship</input>
+        <input asp-action="Update" asp-controller="Ships" type="submit"
+               class="btn btn-primary" value="Update">Change this ship</input>
         <a asp-action="index" class="btn btn-primary">Cancel</a>
     </form>
 </div>

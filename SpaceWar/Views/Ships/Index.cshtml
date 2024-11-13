@@ -33,6 +33,8 @@
                 <td>@ship.ShipLevel</td>
                 <td>
                     <a asp-action="details" asp-controller="ships" asp-route-id="@ship.Id" class="btn btn-info">Ship Details</a>
+                    <a asp-action="update" asp-controller="ships" asp-route-id="@ship.Id" class="btn btn-info">ConfigureShip</a>
+                    <a asp-action="delete" asp-controller="ships" asp-route-id="@ship.Id" class="btn btn-info">ShipDelete</a>
                 </td>
             </tr>
             rowNumber++;
