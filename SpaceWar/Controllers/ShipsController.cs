@@ -249,25 +249,8 @@ namespace SpaceWar.Controllers
                 ID = vm.ImageID
             };
             var image = await _fileServices.RemoveImageFromDatabase(dto);
-            if (image == null) 
-            { 
-                return RedirectToAction("index");
-            }
+            if (image == null) { return RedirectToAction("index"); }
             return RedirectToAction("index");
-        }
-        [HttpPost]
-        public async Task<IActionResult> RemoveImage(ShipImageViewModel vm)
-        {
-            var dto = new FileToDatabaseDto()
-            {
-                ID = vm.ImageID
-            };
-            var image = await _fileServices.RemoveImageFromDatabase(dto);
-            if (image == null)
-            {
-                return RedirectToAction("Index");
-            }
-            return RedirectToAction("Index");
         }
     }
 }
