@@ -207,12 +207,12 @@ namespace SpaceWar.Controllers
             if (ship == null) { return NotFound();}
 
             var images = await _context.FilesToDatabase
-                .Where(x = x.ShipID == id)
+                .Where(x => x.ShipID == id)
                 .Select( y => new ShipImageViewModel
                 {
                     ShipID = y.ID,
                     ImageID = y.ID,
-                    imageData = y.imageData,
+                    imageData = y.ImageData,
                     ImageTitle = y.ImageTitle,
                     Image = string.Format("data:image/gif;base4,{0}", Convert.ToBase64String(y.ImageData))
                 }).ToArrayAsync();
@@ -249,8 +249,25 @@ namespace SpaceWar.Controllers
                 ID = vm.ImageID
             };
             var image = await _fileServices.RemoveImageFromDatabase(dto);
-            if (image == null) { return RedirectToAction("index"); }
+            if (image == null) 
+            { 
+                return RedirectToAction("index");
+            }
             return RedirectToAction("index");
+        }
+        [HttpPost]
+        public async Task<IActionResult> RemoveImage(ShipImageViewModel vm)
+        {
+            var dto = new FileToDatabaseDto()
+            {
+                ID = vm.ImageID
+            };
+            var image = await _fileServices.RemoveImageFromDatabase(dto);
+            if (image == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
     }
 }
