@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SpaceWar.Core.Domain;
+using SpaceWar.Core.ServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
