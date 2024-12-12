@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GalacticTitans.Core.Domain;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SpaceWar.ApplicationServices.Services;
 using SpaceWar.Core.Dto;
@@ -252,5 +253,24 @@ namespace SpaceWar.Controllers
             if (image == null) { return RedirectToAction("index"); }
             return RedirectToAction("index");
         }
+        /* SHIP OWNERSHIP */
+
+        [HttpPost, ActionName("CreateShipOwnership")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateRandomShipOwnership(ShipOwnershipFromStoryViewmodel vm)
+        {
+            int RNG = new Random().Next(1, _context.Ships.Count());
+
+            var sourceShip = _context.Ships.OrderByDescending(x => x.ShipName).Take(RNG);
+
+            var dto = new FileToDatabaseDto()
+            {
+                ShipName = vm.ShipName,
+                ShipDurability = 100,
+            };
+        }
+
+        string result = null;
+
     }
 }
